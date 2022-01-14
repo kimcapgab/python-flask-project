@@ -58,7 +58,7 @@ def character(id=None):
       char.append(model_to_dict(character))
     return jsonify(char)
   
-@app.route('/fullname/<fullname>', methods=['GET'])
+@app.route('/character/fullname/<fullname>', methods=['GET'])
 def fullname(fullname=None):
   if fullname:
     character = Character.get(Character.fullname == fullname)
@@ -70,7 +70,7 @@ def fullname(fullname=None):
       game.append(model_to_dict(character))
     return jsonify(game)
 
-@app.route('/house_name/<house_name>', methods=['GET'])
+@app.route('/character/house_name/<house_name>', methods=['GET'])
 def house_name(house_name=None):
   if house_name:
     character = Character.get(Character.house_name == house_name)
@@ -82,7 +82,7 @@ def house_name(house_name=None):
       game.append(model_to_dict(character))
     return jsonify(game)
 
-@app.route('/quote/<quote>', methods=['GET'])
+@app.route('/character/quote/<quote>', methods=['GET'])
 def quote(quote=None):
   if quote:
     character = Character.get(Character.quote == quote)
