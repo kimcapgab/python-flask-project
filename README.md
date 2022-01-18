@@ -14,16 +14,24 @@ API Used: https://gameofthronesquotes.xyz/
 
 `/characters` - Will return all 20 quotes with related character and character's house name.
 
-Example:
-
 `/characters/<id>` - Will return only one quote that matches the ID number for that quote.
 
-Example:
+Example: `/characters/6`
+
+![alt text][id]
+
+[id]: https://res.cloudinary.com/dn2x2ldxj/image/upload/v1642538814/Screen_Shot_2022-01-18_at_3.46.50_PM_rsg84m.png
 
 `/characters/fullname/<fullname>` - Will return all the quotes that match the name entered in at the end of the route.
 
-Example:
+Example:`/characters/fullname/Jon%20Snow`
+![alt text][name]
+
+[name]: https://res.cloudinary.com/dn2x2ldxj/image/upload/v1642538779/Screen_Shot_2022-01-18_at_3.46.14_PM_p5fnza.png
 
 `/characters/house_name/<house_name>` - Will return all the quotes that are related to the matching house name.
 
-Example:
+Example:`/characters/house_name/House%20Lannister%20of%20Casterly%20Rock`
+![alt text][house]
+
+[house]: https://res.cloudinary.com/dn2x2ldxj/image/upload/v1642539148/Screen_Shot_2022-01-18_at_3.52.23_PM_fz3wke.png
