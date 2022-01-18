@@ -5,13 +5,13 @@ from flask import jsonify
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 
-db = PostgresqlDatabase('character', user='postgres', password='', host='localhost', port=5432)
+db = PostgresqlDatabase('characters', user='postgres', password='', host='localhost', port=5432)
 
 class BaseModel(Model):
   class Meta:
     database = db
     
-class Character(BaseModel):
+class Characters(BaseModel):
   fullname = CharField()
   house_name = CharField()
   quote = CharField()
@@ -45,53 +45,53 @@ db.connect()
 
 app = Flask(__name__)
 
-@app.route('/character', methods=['GET'])
-@app.route('/character/<id>', methods=['GET'])
+@app.route('/characters', methods=['GET'])
+@app.route('/characters/<id>', methods=['GET'])
 def character(id=None):
   if id:
-    character = Character.get(Character.id == id)
-    character = model_to_dict(character)
-    return jsonify(character)
+    characters = Characters.get(Characters.id == id)
+    characters = model_to_dict(characters)
+    return jsonify(characters)
   else:
     char = []
-    for character in Character.select():
-      char.append(model_to_dict(character))
+    for characters in Characters.select():
+      char.append(model_to_dict(characters))
     return jsonify(char)
   
-@app.route('/character/fullname/<fullname>', methods=['GET'])
+@app.route('/characters/fullname/<fullname>', methods=['GET'])
 def fullname(fullname=None):
   if fullname:
-    character = Character.get(Character.fullname == fullname)
-    character = model_to_dict(character)
-    return jsonify(character)
+    characters = Characters.get(Characters.fullname == fullname)
+    characters = model_to_dict(characters)
+    return jsonify(characters)
   else:
     game = []
-    for character in Character.select():
-      game.append(model_to_dict(character))
+    for characters in Characters.select():
+      game.append(model_to_dict(characters))
     return jsonify(game)
 
-@app.route('/character/house_name/<house_name>', methods=['GET'])
+@app.route('/characters/house_name/<house_name>', methods=['GET'])
 def house_name(house_name=None):
   if house_name:
-    character = Character.get(Character.house_name == house_name)
-    character = model_to_dict(character)
-    return jsonify(character)
+    characters = Characters.get(Characters.house_name == house_name)
+    characters = model_to_dict(characters)
+    return jsonify(characters)
   else:
     game = []
-    for character in Character.select():
-      game.append(model_to_dict(character))
+    for characters in Characters.select():
+      game.append(model_to_dict(characters))
     return jsonify(game)
 
-@app.route('/character/quote/<quote>', methods=['GET'])
+@app.route('/characters/quote/<quote>', methods=['GET'])
 def quote(quote=None):
   if quote:
-    character = Character.get(Character.quote == quote)
-    character = model_to_dict(character)
-    return jsonify(character)
+    characters = Characters.get(Characters.quote == quote)
+    characters = model_to_dict(characters)
+    return jsonify(characters)
   else:
     game = []
-    for character in Character.select():
-      game.append(model_to_dict(character))
+    for characters in Characters.select():
+      game.append(model_to_dict(characters))
     return jsonify(game)
 
 
