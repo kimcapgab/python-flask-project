@@ -1,6 +1,8 @@
 # Game of Thrones Quotes API made with Python and Flask
 
-A list of 20 Game of Thrones Quotes by Characters.
+This API will return a list of 20 Game of Thrones Quotes by Characters.
+
+API Used: https://gameofthronesquotes.xyz/
 
 ## Running the App
 
@@ -10,8 +12,18 @@ A list of 20 Game of Thrones Quotes by Characters.
 
 ## Routes
 
-`/characters` - Will return all 20 quotes
+`/characters` - Will return all 20 quotes with related character and character's house name.
 
-`/characters/<id>` - Will return only one quote that matches the ID number
+Example:
 
-`/characters/fullname/<fullname>` - Will return the quotes that match the name entered in at the end of the route.
+`/characters/<id>` - Will return only one quote that matches the ID number for that quote.
+
+Example:
+
+`/characters/fullname/<fullname>` - Will return all the quotes that match the name entered in at the end of the route.
+
+Example:
+
+`/characters/house_name/<house_name>` - Will return all the quotes that are related to the matching house name.
+
+Example:

@@ -61,38 +61,36 @@ def character(id=None):
 @app.route('/characters/fullname/<fullname>', methods=['GET'])
 def fullname(fullname=None):
   if fullname:
-    characters = Characters.get(Characters.fullname == fullname)
-    characters = model_to_dict(characters)
-    return jsonify(characters)
-  else:
     game = []
-    for characters in Characters.select():
+    for characters in Characters.select().where(Characters.fullname == fullname):
       game.append(model_to_dict(characters))
-    return jsonify(game)
+    if len(game) == 0:
+      return jsonify({"Error": "Width not found"})
+    else:
+      return jsonify(game)
 
 @app.route('/characters/house_name/<house_name>', methods=['GET'])
 def house_name(house_name=None):
   if house_name:
-    characters = Characters.get(Characters.house_name == house_name)
-    characters = model_to_dict(characters)
-    return jsonify(characters)
-  else:
     game = []
-    for characters in Characters.select():
+    for characters in Characters.select().where(Characters.house_name == house_name):
       game.append(model_to_dict(characters))
-    return jsonify(game)
+    if len(game) == 0:
+      return jsonify({"Error": "Width not found"})
+    else:
+      return jsonify(game)
 
-@app.route('/characters/quote/<quote>', methods=['GET'])
-def quote(quote=None):
-  if quote:
-    characters = Characters.get(Characters.quote == quote)
-    characters = model_to_dict(characters)
-    return jsonify(characters)
-  else:
-    game = []
-    for characters in Characters.select():
-      game.append(model_to_dict(characters))
-    return jsonify(game)
+# @app.route('/characters/quote/<quote>', methods=['GET'])
+# def quote(quote=None):
+#   if quote:
+#     characters = Characters.get(Characters.quote == quote)
+#     characters = model_to_dict(characters)
+#     return jsonify(characters)
+#   else:
+#     game = []
+#     for characters in Characters.select():
+#       game.append(model_to_dict(characters))
+#     return jsonify(game)
 
 
 
